@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <style>
+        h1 {
+            color: white;
+        }
+        p {
+            color: white;
+        }
+        body {
+            background-image: url('dark1.jpg'); /* Caminho para sua imagem */
+            background-size: cover; /* Faz a imagem cobrir toda a tela */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            height: 100vh; /* Garante que o fundo cubra 100% da altura da tela */
+            margin: 0; /* Remove margens padrão */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .button-container {
+            margin-top: 20px; /* Espaço entre os botões e o conteúdo acima */
+        }
+        button {
+            display: block; /* Faz os botões ficarem um abaixo do outro */
+            margin: 10px auto; /* Centraliza os botões horizontalmente */
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3; /* Cor ao passar o mouse */
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>GAMES Website</h1> 
+    <p>This is a free games website.</p>
+    <div class="button-container">
+        <button onclick="window.location.href='jogo.html'">JV</button>
+        <button onclick="window.location.href='jogo2.html'">BBL</button>
+        <button onclick="window.location.href='jogo3.html'">Fire and Water</button> <!-- Novo botão -->
+    </div>
+</body>
+</html>

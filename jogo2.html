@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Blast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            grid-template-rows: repeat(10, 40px);
+            gap: 2px;
+            background-color: #ddd;
+            padding: 10px;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid #ccc;
+        }
+        .block-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .block {
+            display: grid;
+            grid-template-columns: repeat(3, 40px);
+            grid-template-rows: repeat(3, 40px);
+            gap: 2px;
+            margin: 0 10px;
+        }
+        .block-cell {
+            width: 40px;
+            height: 40px;
+            background-color: #007BFF;
+            border: 1px solid #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Block Blast</h1>
+    <div class="game-container">
+        <div class="board" id="board"></div>
+        <div class="block-container" id="blockContainer"></div>
+    </div>
+    <script>
+        const board = document.getElementById("board");
+        const blockContainer = document.getElementById("blockContainer");
+
+        // Create the game board
+        function createBoard() {
+            for (let i = 0; i < 100; i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("cell");
+                cell.dataset.index = i;
+                board.appendChild(cell);
+            }
+        }
+
+        // Create draggable blocks
+        function createBlocks() {
+            for (let i = 0; i < 3; i++) {
+                const block = document.createElement("div");
+                block.classList.add("block");
+                block.draggable = true;
+
+                // Create block cells
+                for (let j = 0; j < 9; j++) {
+                    const blockCell = document.createElement("div");
+                    blockCell.classList.add("block-cell");
+                    block.appendChild(blockCell);
+                }
+
+                block.addEventListener("dragstart", (e) => {
+                    e.dataTransfer.setData("text/plain", i);
+                });
+
+                blockContainer.appendChild(block);
+            }
+        }
+
+        // Allow dropping on the board
+        board.addEventListener("dragover", (e) => {
+            e.preventDefault();
+        });
+
+        board.addEventListener("drop", (e) => {
+            e.preventDefault();
+            const index = e.target.dataset.index;
+            if (index) {
+                const cell = board.querySelector(`[data-index="${index}"]`);
+                cell.style.backgroundColor = "#007BFF";
+            }
+        });
+
+        createBoard();
+        createBlocks();
+    </script>
+</body>
+</html>
+<style>
+    body {
+     background-image: url('dark1.jpg'); /* Caminho para sua imagem */
+     background-size: cover; /* Faz a imagem cobrir toda a tela */
+     background-position: center; /* Centraliza a imagem */
+     background-repeat: no-repeat; /* Evita repetição da imagem */
+     height: 100vh; /* Garante que o fundo cubra 100% da altura da tela */
+     margin: 0; /* Remove margens padrão */
+     font-family: Arial, sans-serif;
+     text-align: center;
